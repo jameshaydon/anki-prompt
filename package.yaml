@@ -1,0 +1,127 @@
+name: anki-prompt
+version: 0.1.0.0
+github: "jameshaydon/anki-prompt"
+license: BSD3
+author: "James Henri Haydon"
+maintainer: "james.haydon@gmail.com"
+copyright: "James Henri Haydon"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/jameshaydon/anki-prompt#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+  - anki-tools
+  - protolude
+  - data-default
+  - directory
+  - sqlite-simple
+  - filepath
+  - text
+  - html-parse
+  - containers
+  - prettyprinter
+  - prettyprinter-ansi-terminal
+  - terminal-size
+  - ansi-terminal
+
+library:
+  source-dirs: src
+
+executables:
+  anki-prompt-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - anki-prompt
+
+tests:
+  anki-prompt-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - anki-prompt
+
+default-extensions:
+  - BangPatterns
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveAnyClass
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveTraversable
+  - DerivingStrategies
+  - DerivingVia
+  - DuplicateRecordFields
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GeneralizedNewtypeDeriving
+  - InstanceSigs
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - LambdaCase
+  - OverloadedLabels
+  - OverloadedStrings
+  - PatternSynonyms
+  - PolyKinds
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TupleSections
+  - TypeApplications
+  - TypeOperators
+  - ViewPatterns
+  - QuantifiedConstraints
+  - EmptyDataDeriving
+  - EmptyCase
+  - UndecidableInstances
+
+ghc-options:
+  # The following two options will write HIE data in .hie
+  - -hiedir=.hie
+  - -fwrite-ide-info
+  # The following two options make for cleaner compiler output
+  - -fhide-source-paths
+  - -freverse-errors
+  # Turn on all warnings
+  - -Weverything
+  # Make warning into errors
+  - -Werror
+  # Turn off some warnings
+  - -Wno-missing-exported-signatures # missing-exported-signatures turns off the more strict -Wmissing-signatures.
+  - -Wno-missing-import-lists # Requires explicit imports of _every_ function (e.g. ‘$’); too strict
+  - -Wno-missed-specialisations # When GHC can’t specialize a polymorphic function.
+  - -Wno-all-missed-specialisations # See missed-specialisations
+  - -Wno-unsafe # Don’t use Safe Haskell warnings
+  - -Wno-safe # Don’t use Safe Haskell warnings
+  - -Wno-missing-local-signatures # Warning for polymorphic local bindings; nothing wrong with those.
+  - -Wno-monomorphism-restriction # Don’t warn if the monomorphism restriction is used
+  - -Wno-missing-export-lists # Don't warn if export list is missing
+  - -Wno-missing-safe-haskell-mode
+  - -Wno-prepositive-qualified-module
+  - -Wno-unused-packages
